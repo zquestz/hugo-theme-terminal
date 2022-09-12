@@ -9,7 +9,7 @@
     display: flex;
     text-align: center;
     position: relative;
-    margin: 100px 0 20px;
+    margin: 3em 0 20px;
 
     &-h {
       text-align: center;

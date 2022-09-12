@@ -8,12 +8,19 @@
 {{ template "_internal/google_analytics.html" . }}
 
 <!-- Theme CSS -->
+{{ $scp := "" }}
+{{ if (isset $.Site.Params "usesourcecodepro") }}
+{{ if $.Site.Params.useSourceCodePro }}
+{{ $scp = "-scp" }}
+{{ end }}
+{{ end }}
+
 {{ if (isset .Params "color") }}
-  <link rel="stylesheet" href="{{ (printf "assets/%s.css" .Params.color) | relURL }}">
+  <link rel="stylesheet" href="{{ (printf "assets/%s%s.css" .Params.color $scp) | relURL }}">
 {{ else if and (ne $.Site.Params.ThemeColor "orange") (ne $.Site.Params.ThemeColor "color" "") }}
-  <link rel="stylesheet" href="{{ (printf "assets/%s.css" $.Site.Params.ThemeColor) | relURL }}">
+  <link rel="stylesheet" href="{{ (printf "assets/%s%s.css" $.Site.Params.ThemeColor $scp) | relURL }}">
 {{ else }}
-  <link rel="stylesheet" href="{{ "assets/orange.css" | relURL }}">
+  <link rel="stylesheet" href="{{ (printf "assets/orange%s.css", $scp) | relURL }}">
 {{ end }}
 
 <!-- Custom CSS to override theme properties (/static/style.css) -->
