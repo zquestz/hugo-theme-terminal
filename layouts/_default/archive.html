@@ -1,0 +1,33 @@
+{{- define "main" -}}
+<div class="post">
+  <h1 class="post-title">
+    <a href="{{- .RelPermalink -}}">{{- .Title | markdownify -}}</a>
+  </h1>
+  <ul>
+  {{- range where site.RegularPages "Type" "posts" -}}
+    <li class="post-list">
+        <span class="post-meta">
+          <span class="post-date">
+            <a href="{{- .RelPermalink -}}">
+              {{- .Date.Format "2006-01-02" -}}
+            </a>
+          </span>
+        </span>
+        ::
+        <span class="post-list-title">
+          <a href="{{- .RelPermalink -}}">
+            {{- .Title -}}
+          </a>
+        </span>
+        :: {{- range .Params.tags -}}
+        <span class="post-meta">
+          #<a href="{{- (urlize (printf "tags/%s/" . )) | relLangURL -}}">
+            {{- . -}}
+          </a>
+        </span>
+        {{- end -}}
+    </li>
+  {{- end -}}
+  </ul>
+</div>
+{{- end -}}

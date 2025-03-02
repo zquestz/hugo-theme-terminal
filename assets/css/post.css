@@ -19,6 +19,12 @@
   width: 100%;
 }
 
+li {
+  &.post-list {
+    margin-bottom: 8px;
+  }
+}
+
 .post {
   width: 100%;
   text-align: left;
@@ -48,7 +54,7 @@
     border-bottom: var(--border);
 
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 2px;
       display: block;
@@ -65,7 +71,7 @@
     display: block;
     margin-bottom: 20px;
     font-size: 1rem;
-    opacity: .5;
+    opacity: 0.5;
 
     a {
       text-decoration: none;
@@ -101,7 +107,7 @@
     list-style: none;
 
     li:not(:empty):before {
-      content: '-';
+      content: "-";
       position: absolute;
       left: -20px;
       color: var(--accent);
@@ -132,7 +138,10 @@
   visibility: hidden;
 }
 
-h1:hover a, h2:hover a, h3:hover a, h4:hover a {
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a {
   visibility: visible;
 }
 

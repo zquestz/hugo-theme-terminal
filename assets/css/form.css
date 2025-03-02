@@ -1,4 +1,6 @@
-input, textarea, select {
+input,
+textarea,
+select {
   background: transparent;
   color: var(--accent);
   border: 1px solid var(--accent);
@@ -7,7 +9,8 @@ input, textarea, select {
   font: inherit;
   appearance: none;
 
-  &:focus, :active {
+  &:focus,
+  :active {
     border-color: var(--color);
     outline: 1px solid var(--color);
   }
