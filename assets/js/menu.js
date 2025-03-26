@@ -5,7 +5,12 @@ const desktopMenu = document.querySelector(".menu__inner--desktop");
 const desktopMenuTrigger = document.querySelector(".menu__sub-inner-more-trigger");
 const menuMore = document.querySelector(".menu__sub-inner-more");
 const mobileQuery = getComputedStyle(document.body).getPropertyValue("--phoneWidth");
-const isMobile = () => window.matchMedia(mobileQuery).matches;
+var wasMobile = false;
+const isMobile = () => {
+  var mobileMatch = window.matchMedia(mobileQuery).matches;
+  wasMobile = mobileMatch ? true : false;
+  return mobileMatch;
+};
 const handleMenuClasses = () => {
   mobileMenuTrigger && mobileMenuTrigger.classList.toggle("hidden", !isMobile());
   menu && menu.classList.toggle("hidden", isMobile());
@@ -27,7 +32,13 @@ document.body.addEventListener("click", () => {
   }
 });
 
-window.addEventListener("resize", handleMenuClasses);
+window.addEventListener("resize", () => {
+  if (wasMobile == isMobile()) {
+    return;
+  }
+
+  handleMenuClasses();
+});
 
 // Mobile menu
 
