@@ -10,9 +10,10 @@
         {{ end }}
       {{ end }}
       {{ if gt (len $.Site.Menus.main) $.Site.Params.showMenuItems }}
-        <ul class="menu__sub-inner">
-          <li class="menu__sub-inner-more-trigger">{{ $.Site.Params.MenuMore }} ▾</li>
-
+        <li>
+          <ul class="menu__sub-inner">
+            <li class="menu__sub-inner-more-trigger">{{ $.Site.Params.MenuMore }} ▾</li>
+          </ul>
           <ul class="menu__sub-inner-more hidden">
             {{ range last (sub (len $.Site.Menus.main) $.Site.Params.showMenuItems) $.Site.Menus.main }}
               {{ if not .HasChildren }}
@@ -22,7 +23,7 @@
               {{ end }}
             {{ end }}
           </ul>
-        </ul>
+        </li>
       {{ end }}
     {{ else }}
       {{ range $.Site.Menus.main }}
@@ -35,17 +36,23 @@
     {{ end }}
 
     {{ if and $.Site.Params.showLanguageSelector (len $.Site.Home.AllTranslations) }}
-    <div class="spacer"></div>
-    <ul class="language-selector">
-      <ul class="language-selector-current">
-          <li>{{ .Language.LanguageName }} ▾</li>
+    <li><div class="spacer"></div></li>
+    <li>
+      <ul class="language-selector">
+        <li>
+          <ul class="language-selector-current">
+            <li>{{ .Language.LanguageName }} ▾</li>
+          </ul>
+        </li>
+        <li>
+          <ul class="language-selector__more hidden">
+            {{ range $.Site.Home.AllTranslations }}
+            <li><a{{ if eq .Language $.Language }} class="active"{{ end }} href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a></li>
+            {{ end }}
+          </ul>
+        </li>
       </ul>
-      <ul class="language-selector__more hidden">
-        {{ range $.Site.Home.AllTranslations }}
-        <li><a{{ if eq .Language $.Language }} class="active"{{ end }} href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a></li>
-        {{ end }}
-      </ul>
-    </ul>
+    </li>
     {{ end }}
   </ul>
 
@@ -58,12 +65,12 @@
       {{ end }}
     {{ end }}
     {{ if and $.Site.Params.showLanguageSelector (len $.Site.Home.AllTranslations) }}
-    <hr />
-      {{ range $.Site.Home.AllTranslations }}
-        <li>
-          <a{{ if eq .Language $.Language }} class="active"{{ end }} href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a>
-        </li>
-      {{ end }}
+    <li><hr /></li>
+    {{ range $.Site.Home.AllTranslations }}
+      <li>
+        <a{{ if eq .Language $.Language }} class="active"{{ end }} href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a>
+      </li>
+    {{ end }}
     {{ end }}
   </ul>
 </nav>

@@ -114,10 +114,6 @@
       padding: 0;
       margin: 0;
 
-      &:not(:only-child) {
-        margin-left: 20px;
-      }
-
       &-more {
         @mixin menu;
         top: 35px;
