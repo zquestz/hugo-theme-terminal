@@ -23,6 +23,7 @@
   <img src="{{ $cover }}"
     alt="{{ .Title | plainify | default " " }}"
     title="{{ .Params.CoverCredit |plainify|default "Cover Image" }}"
+    loading="lazy"
     {{- if $coverImg -}}
     width="{{ $coverImg.Width }}"
     height="{{ $coverImg.Height }}"
