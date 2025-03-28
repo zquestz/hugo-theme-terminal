@@ -14,7 +14,8 @@
     {{ end }}
     {{ $paginator := .Paginate (where $PageContext.RegularPages "Type" $contentTypeName) }}
 
-    {{ range $paginator.Pages }}
+    {{ range $index, $page := $paginator.Pages }}
+      {{ $page.Scratch.Set "isFirstPost" (eq $index 0) }}
       <div class="post on-list">
         <h1 class="post-title">
           <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>

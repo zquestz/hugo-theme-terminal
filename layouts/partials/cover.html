@@ -1,6 +1,7 @@
 {{- $cover := false -}}
 {{- $coverImg := false -}}
 {{- $autoCover := default $.Site.Params.autoCover false -}}
+{{- $isFirstPost := .Scratch.Get "isFirstPost" | default false -}}
 
 {{- if index .Params "cover" -}}
   {{- if .Resources.GetMatch .Params.Cover -}}
@@ -23,7 +24,7 @@
   <img src="{{ $cover }}"
     alt="{{ .Title | plainify | default " " }}"
     title="{{ .Params.CoverCredit |plainify|default "Cover Image" }}"
-    loading="lazy"
+    {{- if not $isFirstPost -}}loading="lazy"{{- end -}}
     {{- if $coverImg -}}
     width="{{ $coverImg.Width }}"
     height="{{ $coverImg.Height }}"
