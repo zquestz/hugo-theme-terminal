@@ -27,12 +27,12 @@
 }
 
 body {
-  font-family: "Source Code Pro", Monaco, Consolas, Ubuntu Mono, monospace;
+  font-family: "Source Code Pro", Monaco, Consolas, "Ubuntu Mono", monospace;
 }
 
 code,
 kbd {
-  font-family: "Source Code Pro", Monaco, Consolas, Ubuntu Mono, monospace !important;
+  font-family: "Source Code Pro", Monaco, Consolas, "Ubuntu Mono", monospace !important;
 }
 
 .post-content {

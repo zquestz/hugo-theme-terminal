@@ -35,7 +35,7 @@ a.button {
     box-shadow: none;
     padding: 8px 18px;
 
-    :hover {
+    &:hover {
       transform: none;
       box-shadow: none;
     }

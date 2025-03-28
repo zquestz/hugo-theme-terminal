@@ -10,7 +10,7 @@ select {
   appearance: none;
 
   &:focus,
-  :active {
+  &:active {
     border-color: var(--color);
     outline: 1px solid var(--color);
   }

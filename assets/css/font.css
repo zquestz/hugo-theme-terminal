@@ -1,19 +1,17 @@
 @font-face {
-  font-display: swap;
   font-family: "Fira Code";
   font-style: normal;
   font-weight: 400;
-  src: local("Fira Code") url("/assets/fonts/FiraCode-Regular.woff2") format("woff2")
+  src: local("Fira Code"), url("/assets/fonts/FiraCode-Regular.woff2") format("woff2"),
     url("/assets/fonts/FiraCode-Regular.woff") format("woff");
   font-display: swap;
 }
 
 @font-face {
-  font-display: swap;
   font-family: "Fira Code";
   font-style: normal;
   font-weight: 700;
-  src: local("Fira Code") url("/assets/fonts/FiraCode-Bold.woff2") format("woff2")
+  src: local("Fira Code"), url("/assets/fonts/FiraCode-Bold.woff2") format("woff2"),
     url("/assets/fonts/FiraCode-Bold.woff") format("woff");
   font-display: swap;
 }
@@ -21,5 +19,5 @@
 body,
 code,
 kbd {
-  font-family: "Fira Code", Monaco, Consolas, Ubuntu Mono, monospace !important;
+  font-family: "Fira Code", Monaco, Consolas, "Ubuntu Mono", monospace !important;
 }
