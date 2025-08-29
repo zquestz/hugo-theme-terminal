@@ -51,8 +51,12 @@ end }}
 />
 <meta property="og:url" content="{{ .Permalink }}" />
 <meta property="og:site_name" content="{{ $.Site.Title }}" />
-{{ if and (not .IsHome) (isset .Params "cover") }} <meta property="og:image" content="{{ .Param
-"cover" }}"> {{ else }} {{ if isset $.Site.Params "favicon" }}
+{{ if and (not .IsHome) (isset .Params "cover") }}
+{{ $cover := .Resources.GetMatch .Params.cover }}
+{{ if $cover }}
+<meta property="og:image" content="{{ $cover.Permalink }}" />
+{{ end }}
+{{ else }} {{ if isset $.Site.Params "favicon" }}
 <meta property="og:image" content="{{ $.Site.Params.favicon | absURL }}" />
 {{ else }} <meta property="og:image" content="{{ printf "img/favicon/%s.png"
 $.Site.Params.ThemeColor | absURL }}">
