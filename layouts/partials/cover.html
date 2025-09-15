@@ -24,7 +24,7 @@
   <img src="{{ $cover }}"
     alt="{{ .Title | plainify | default " " }}"
     title="{{ .Params.CoverCredit |plainify|default "Cover Image" }}"
-    {{- if not $isFirstPost -}}loading="lazy"{{- end -}}
+    {{- if not $isFirstPost -}}loading="lazy"{{- else -}}fetchpriority="high"{{- end -}}
     {{- if $coverImg -}}
     width="{{ $coverImg.Width }}"
     height="{{ $coverImg.Height }}"
