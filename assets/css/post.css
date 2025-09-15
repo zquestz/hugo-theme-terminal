@@ -31,10 +31,6 @@ li {
   margin: 20px auto;
   padding: 20px 0;
 
-  @media (--tablet) {
-    max-width: 660px;
-  }
-
   &:not(:last-of-type) {
     border-bottom: 1px solid var(--border-color);
   }
