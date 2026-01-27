@@ -2,11 +2,12 @@
 {{- $coverImg := false -}}
 {{- $autoCover := default $.Site.Params.autoCover false -}}
 {{- $isFirstPost := .Scratch.Get "isFirstPost" | default false -}}
+{{- $maxWidth := 800 -}}
+{{- $skipResizePaths := $.Site.Params.skipResizePaths | default slice -}}
 
 {{- if index .Params "cover" -}}
   {{- if .Resources.GetMatch .Params.Cover -}}
     {{- $coverImg = (.Resources.GetMatch .Params.Cover) -}}
-    {{- $cover = $coverImg.RelPermalink -}}
   {{- else -}}
     {{- $cover = relURL .Params.Cover -}}
   {{- end -}}
@@ -14,9 +15,25 @@
   {{- if (not .Params.Cover) -}}
     {{- if .Resources.GetMatch "cover.*" -}}
       {{- $coverImg = .Resources.GetMatch "cover.*" -}}
-      {{- $cover = $coverImg.RelPermalink -}}
     {{- end -}}
   {{- end -}}
+{{- end -}}
+
+{{- /* Resize image if it's a page resource and wider than maxWidth */ -}}
+{{- /* Skip GIFs and paths in skipResizePaths config */ -}}
+{{- if $coverImg -}}
+  {{- $isGif := eq $coverImg.MediaType.SubType "gif" -}}
+  {{- $inSkipList := false -}}
+  {{- range $skipResizePaths -}}
+    {{- if in $coverImg.RelPermalink . -}}
+      {{- $inSkipList = true -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $skipResize := or $isGif $inSkipList -}}
+  {{- if and (gt $coverImg.Width $maxWidth) (not $skipResize) -}}
+    {{- $coverImg = $coverImg.Resize (printf "%dx q85 webp" $maxWidth) -}}
+  {{- end -}}
+  {{- $cover = $coverImg.RelPermalink -}}
 {{- end -}}
 
 {{if $cover -}}
