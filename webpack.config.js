@@ -1,12 +1,16 @@
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import TerserPlugin from "terser-webpack-plugin";
 
-const path = require("path");
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const join = (...paths) => path.join(__dirname, ...paths);
 
-module.exports = (env, { mode }) => ({
+export default (env, { mode }) => ({
   resolve: {
     extensions: [".js", ".css"],
     modules: ["assets", "node_modules"],
@@ -36,6 +40,7 @@ module.exports = (env, { mode }) => ({
     filename: "[name].js",
     path: join("static/assets"),
     publicPath: "",
+    hashDigestLength: 32,
   },
   performance: {
     hints: false,
@@ -54,14 +59,12 @@ module.exports = (env, { mode }) => ({
       },
       {
         test: /\.(png|jpg|woff|woff2|ttf|eot|svg)$/,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              limit: 8192,
-            },
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8192,
           },
-        ],
+        },
       },
       {
         test: /\.css$/,

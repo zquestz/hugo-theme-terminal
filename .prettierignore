@@ -1,0 +1,12 @@
+# Hugo templates - prettier-plugin-go-template causes regressions
+# (whitespace in attribute values, broken meta tags)
+layouts/
+
+# Built assets
+static/
+
+# Dependencies
+node_modules/
+
+# Minified libraries
+assets/js/prism.js

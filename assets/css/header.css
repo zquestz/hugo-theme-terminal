@@ -52,8 +52,8 @@
 
   .menu {
     --shadow-color: color-mod(var(--background) a(80%));
-    --shadow: 0 10px var(--shadow-color), -10px 10px var(--shadow-color),
-      10px 10px var(--shadow-color);
+    --shadow:
+      0 10px var(--shadow-color), -10px 10px var(--shadow-color), 10px 10px var(--shadow-color);
     margin: 20px 1px;
 
     a.active {

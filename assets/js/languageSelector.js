@@ -15,7 +15,7 @@ document.body.addEventListener("click", () => {
 });
 
 languageSelector &&
-  languageSelector.addEventListener("click", e => {
+  languageSelector.addEventListener("click", (e) => {
     if (!isMobile()) {
       e.stopPropagation();
       moreLanguagesContainer.classList.toggle("hidden");
