@@ -1,5 +1,15 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Preload fonts to reduce critical path chain -->
+{{ if $.Site.Params.useSourceCodePro }}
+<link rel="preload" href="/assets/b886e5e4d0fb2ec299038048cb3d9a25.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/0fab52a946ce9600124a63fe8cd099d5.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/71562184b8be8d260decf50de5a9af26.woff2" as="font" type="font/woff2" crossorigin>
+{{ else }}
+<link rel="preload" href="/assets/fb1bb49c43d015b780567b88fbe79d64.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/4be56996e127ca0cc550ebc8d36ecbc8.woff2" as="font" type="font/woff2" crossorigin>
+{{ end }}
 <meta
   name="description"
   content="{{ if .IsHome }}{{ $.Site.Params.Subtitle }}{{ else if .Description}}{{ .Description | plainify }}{{ else }}{{ .Summary | plainify }}{{ end }}"
