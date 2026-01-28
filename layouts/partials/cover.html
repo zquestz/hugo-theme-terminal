@@ -1,8 +1,10 @@
 {{- $cover := false -}}
 {{- $coverImg := false -}}
+{{- $coverImgSmall := false -}}
 {{- $autoCover := default $.Site.Params.autoCover false -}}
 {{- $isFirstPost := .Scratch.Get "isFirstPost" | default false -}}
 {{- $maxWidth := 800 -}}
+{{- $mobileWidth := 600 -}}
 {{- $skipResizePaths := $.Site.Params.skipResizePaths | default slice -}}
 
 {{- if index .Params "cover" -}}
@@ -30,22 +32,23 @@
     {{- end -}}
   {{- end -}}
   {{- $skipResize := or $isGif $inSkipList -}}
+  {{- if and (gt $coverImg.Width $mobileWidth) (not $skipResize) -}}
+    {{- $coverImgSmall = $coverImg.Resize (printf "%dx q85 webp" $mobileWidth) -}}
+  {{- end -}}
   {{- if and (gt $coverImg.Width $maxWidth) (not $skipResize) -}}
     {{- $coverImg = $coverImg.Resize (printf "%dx q85 webp" $maxWidth) -}}
   {{- end -}}
   {{- $cover = $coverImg.RelPermalink -}}
 {{- end -}}
 
-{{if $cover -}}
+{{- if $cover }}
 <div class="post-cover">
   <img src="{{ $cover }}"
+    {{- if $coverImgSmall }} srcset="{{ $coverImgSmall.RelPermalink }} {{ $coverImgSmall.Width }}w, {{ $coverImg.RelPermalink }} {{ $coverImg.Width }}w" sizes="(max-width: 684px) 600px, 800px"{{- end }}
     alt="{{ .Title | plainify | default " " }}"
-    title="{{ .Params.CoverCredit |plainify|default "Cover Image" }}"
-    {{- if not $isFirstPost -}}loading="lazy"{{- else -}}fetchpriority="high"{{- end -}}
-    {{- if $coverImg -}}
-    width="{{ $coverImg.Width }}"
-    height="{{ $coverImg.Height }}"
-    {{- end -}}
+    title="{{ .Params.CoverCredit | plainify | default "Cover Image" }}"
+    {{- if not $isFirstPost }} loading="lazy"{{- else }} fetchpriority="high"{{- end }}
+    {{- if $coverImg }} width="{{ $coverImg.Width }}" height="{{ $coverImg.Height }}"{{- end }}
   />
 </div>
 {{- end -}}
