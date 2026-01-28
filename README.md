@@ -290,4 +290,6 @@ If you like my work and want to support the development of the project, now you 
 
 Copyright © 2019-2020 Radosław Kozieł ([@panr](https://twitter.com/panr))
 
+Copyright © 2022-2026 Josh Ellithorpe ([@zquestz](https://github.com/zquestz))
+
 The theme is released under the MIT License. Check the [original theme license](https://github.com/panr/hugo-theme-terminal/blob/master/LICENSE.md) for additional licensing information.
