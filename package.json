@@ -2,7 +2,7 @@
   "name": "terminal",
   "version": "2.1.0",
   "main": "index.js",
-  "author": "Radosław Kozieł <@panr> <radoslaw.koziel@gmail.com>",
+  "author": "Josh Ellithorpe <@zquestz> <quest@mac.com>",
   "license": "MIT",
   "browserslist": [
     "last 2 versions",
