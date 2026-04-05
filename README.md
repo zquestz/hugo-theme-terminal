@@ -97,6 +97,10 @@ paginate = 5
   # Custom favicon (default: colored square based on theme)
   # favicon = "favicon.ico"
 
+[params.author]
+  name = "name"
+  email = "email@example.com"
+
 [params.twitter]
   creator = ""                  # Your Twitter handle (without @)
   site = ""

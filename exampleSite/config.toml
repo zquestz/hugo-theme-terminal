@@ -10,6 +10,10 @@ paginate = 5
   fullWidthTheme = false
   centerTheme = false
 
+[params.author]
+  name = "name"
+  email = "email@example.com"
+
 [languages]
   [languages.en]
     title = "Terminal"
